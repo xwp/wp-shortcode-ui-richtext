@@ -2,8 +2,41 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext';
-	var richText = {};
+	var richTextSelector = 'textarea.shortcake-richtext',
+		richText = {},
+		escapeMarkup;
+
+	/**
+	 * Escapes shortcode special characters (",[,])
+	 *
+	 * @param {string} htmlCode
+	 * @returns {string}
+	*/
+	richText.escapeMarkup = function( htmlCode ) {
+		var escapedHtmlCode = htmlCode,
+			tagsWithQuotesOrBrakets = /(<[^>]*[\[,\],"][^>]*>)/g,
+			escapeQuotesBrachetsInsideTag,
+			escapeQuotesBrachetsOutsideOfTags;
+
+		escapeQuotesBrachetsInsideTag = function( match, tag ) {
+			tag = tag.replace(/"/g, "'"); // replaces " by '
+			tag = tag.replace(/[\[,\]]/g, ""); // removes [ and ]
+			return tag;
+		};
+
+		escapeQuotesBrachetsOutsideOfTags = function( markup ) {
+			var escapedMarkup = markup;
+			escapedMarkup = escapedMarkup.replace(/"/g, "&quot;");
+			escapedMarkup = escapedMarkup.replace(/\[/g, "&#91;");
+			escapedMarkup = escapedMarkup.replace(/\]/g, "&#93;");
+			return escapedMarkup;
+		};
+
+		escapedHtmlCode = htmlCode.replace(tagsWithQuotesOrBrakets, escapeQuotesBrachetsInsideTag);
+		escapedHtmlCode = escapeQuotesBrachetsOutsideOfTags( escapedHtmlCode );
+
+		return escapedHtmlCode;
+	}
 
 	/**
 	 * Loads summernote rich text editor.
@@ -29,11 +62,10 @@ jQuery(function( $ ) {
 	richText.unload = function( selector ) {
 		if ( ( 'undefined' !== $.fn.summernote ) && ( $( selector ).length ) ) {
 			$( selector ).each( function() {
-				/* TODO: Handle ", [, ] */
+				var htmlCode = richText.escapeMarkup( $( this ).summernote( 'code' ) );
 				$( this )
-					.text( $( this ).summernote( 'code' ) )
-					.trigger( 'input' )
-					.summernote( 'destroy' );
+					.text( htmlCode )
+					.trigger( 'input' );
 			});
 			return true;
 		} else {
