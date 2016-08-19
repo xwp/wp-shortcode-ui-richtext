@@ -80,10 +80,7 @@ shortcode_ui_register_for_shortcode( 'shortcode_name',
 = 0.1 =
 Initial release.
 
-= 0.2 =
-This version adds escaping for quotes, allowing safe rich text editing without encode being set to true.
-
 == Upgrade Notice ==
 
-= 0.2 =
-With this upgrade, you no longer need 'encode' => true on rich text elements.
+= 0.1 =
+Initial version. No need to upgrade.

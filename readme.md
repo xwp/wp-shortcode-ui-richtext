@@ -3,12 +3,12 @@
 
 Plugin for adding rich text editing capabilities to textareas in Shortcake.
 
-**Contributors:** [xwp](https://profiles.wordpress.org/xwp), [mihai2u](https://profiles.wordpress.org/mihai2u)  
-**Tags:** [shortcodes](https://wordpress.org/plugins/tags/shortcodes)  
-**Requires at least:** 4.3  
-**Tested up to:** 4.6  
-**Stable tag:** trunk (master)  
-**License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
+**Contributors:** [xwp](https://profiles.wordpress.org/xwp), [mihai2u](https://profiles.wordpress.org/mihai2u)
+**Tags:** [shortcodes](https://wordpress.org/plugins/tags/shortcodes)
+**Requires at least:** 4.3
+**Tested up to:** 4.6
+**Stable tag:** trunk (master)
+**License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)
 
 ## Description ##
 
@@ -85,13 +85,10 @@ shortcode_ui_register_for_shortcode( 'shortcode_name',
 ### 0.1 ###
 Initial release.
 
-### 0.2 ###
-This version adds escaping for quotes, allowing safe rich text editing without encode being set to true.
-
 
 ## Upgrade Notice ##
 
-### 0.2 ###
-With this upgrade, you no longer need 'encode' => true on rich text elements.
+### 0.1 ###
+Initial version. No need to upgrade.
 
 
