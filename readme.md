@@ -21,7 +21,10 @@ You need [Shortcake (Shortcode UI)](https://ro.wordpress.org/plugins/shortcode-u
 1. Upload the plugin files to the `/wp-content/plugins/shortcode-ui-richtext` directory.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Add the meta class option to the textarea input type of an existing shortcake register_for_shortcode call
+3. Add the meta class option to the textarea input type of an existing shortcake register_for_shortcode call.
+4. Due to the possibility of the HTML content to contain special characters like [, ] and ", it is highly recommended to turn on the encode flag as well.
 ```php
+'encode' => true,
 'meta'  => array(
 	'class' => 'shortcake-richtext',
 ),
@@ -60,6 +63,7 @@ shortcode_ui_register_for_shortcode( 'shortcode_name',
 				'label' => esc_html__( 'Text Element', 'namespace' ),
 				'attr'  => 'text_element',
 				'type'  => 'textarea',
+				'encode' => true,
 				'meta'  => array(
 						'class' => 'shortcake-richtext',
 				),
