@@ -8,7 +8,7 @@
  * Author URI: https://xwp.co/
  * License: GPLv2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: shortcode-ui-richtext
+ * Text Domain: scui_richtext
  * Domain Path: /languages
  *
  * Copyright (c) 2016 XWP (https://xwp.co/)
@@ -34,17 +34,17 @@ if ( version_compare( phpversion(), '5.3', '>=' ) ) {
 	require_once __DIR__ . '/instance.php';
 } else {
 	if ( defined( 'WP_CLI' ) ) {
-		WP_CLI::warning( _shortcode_ui_richtext_php_version_text() );
+		WP_CLI::warning( scui_richtext_php_version_text() );
 	} else {
-		add_action( 'admin_notices', '_shortcode_ui_richtext_php_version_error' );
+		add_action( 'admin_notices', 'scui_richtext_php_version_error' );
 	}
 }
 
 /**
  * Admin notice for incompatible versions of PHP.
  */
-function _shortcode_ui_richtext_php_version_error() {
-	printf( '<div class="error"><p>%s</p></div>', esc_html( _shortcode_ui_richtext_php_version_text() ) );
+function scui_richtext_php_version_error() {
+	printf( '<div class="error"><p>%s</p></div>', esc_html( scui_richtext_php_version_text() ) );
 }
 
 /**
@@ -52,6 +52,6 @@ function _shortcode_ui_richtext_php_version_error() {
  *
  * @return string
  */
-function _shortcode_ui_richtext_php_version_text() {
-	return __( 'Shortcake Richtext plugin error: Your version of PHP is too old to run this plugin. You must be running PHP 5.3 or higher.', 'shortcode-ui-richtext' );
+function scui_richtext_php_version_text() {
+	return __( 'Shortcake Richtext plugin error: Your version of PHP is too old to run this plugin. You must be running PHP 5.3 or higher.', 'scui_richtext' );
 }
