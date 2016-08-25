@@ -57,17 +57,4 @@ class Test_Plugin_Base extends \WP_UnitTestCase {
 		$this->plugin->trigger_warning( 'Param is 0!', \E_USER_WARNING );
 		restore_error_handler();
 	}
-
-	/**
-	 * Test is_wpcom_vip_prod().
-	 *
-	 * @see Plugin_Base::is_wpcom_vip_prod()
-	 */
-	public function test_is_wpcom_vip_prod() {
-		if ( ! defined( 'WPCOM_IS_VIP_ENV' ) ) {
-			$this->assertFalse( $this->plugin->is_wpcom_vip_prod() );
-			define( 'WPCOM_IS_VIP_ENV', true );
-		}
-		$this->assertEquals( WPCOM_IS_VIP_ENV, $this->plugin->is_wpcom_vip_prod() );
-	}
 }
