@@ -12,11 +12,13 @@ Plugin for adding rich text editing capabilities to textareas in Shortcake.
 
 ## Description ##
 
-This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://ro.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
+This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://en.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
+
+At the time of writing the Wordpress plugins directory version of Shortcake (Shortcode UI) has not been updated since November 2015. This functionality relies on [PR #628](https://github.com/wp-shortcake/shortcake/pull/628) which got merged into the master branch of the plug-in in August 2016.
 
 ## Installation ##
 
-You need [Shortcake (Shortcode UI)](https://ro.wordpress.org/plugins/shortcode-ui/) already installed and activated.
+You need the latest code in master from the Github repository of [Shortcake (Shortcode UI)](https://github.com/wp-shortcake/shortcake) already installed and activated. As soon as the newer release of the plug-in comes out (v0.6.3), this will be able to be used with the Wordpress plugins directory version from that point forward.
 
 1. Upload the plugin files to the `/wp-content/plugins/shortcode-ui-richtext` directory.
 2. Activate the plugin through the 'Plugins' screen in WordPress
@@ -73,6 +75,10 @@ shortcode_ui_register_for_shortcode( 'shortcode_name',
 );
 ```
 
+### This doesn't work although I added the class according to the instructions. Am I missing anything? ###
+Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/wp-shortcode-ui-richtext/issues), please ensure you are running the latest Shortcake (Shortcode UI) version downloaded from their own [GitHub repository](https://github.com/wp-shortcake/shortcake).
+
+This depends on newly added functionality to the Shortcake plug-in, which have not yet been released in the Wordpress Plugins directory. Shortcake versions up to and including 0.6.2 won't work.
 
 ## Screenshots ##
 
