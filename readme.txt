@@ -13,7 +13,9 @@ Plugin for adding rich text editing capabilities to textareas in Shortcake.
 
 This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://ro.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
 
-At the time of writing the Wordpress plugins directory version of Shortcake (Shortcode UI) has not been updated since November 2015. This functionality relies on [PR #628](https://github.com/wp-shortcake/shortcake/pull/628) which got merged into the master branch of the plug-in in August 2016.
+It uses the [Summernote](http://summernote.org/) Super Simple WYSIWYG Editor on Bootstrap library.
+
+Important: at the time of writing the Wordpress plugins directory version of Shortcake (Shortcode UI) has not been updated since November 2015. This functionality relies on [PR #628](https://github.com/wp-shortcake/shortcake/pull/628) which got merged into the master branch of the plug-in in August 2016.
 
 == Installation ==
 
