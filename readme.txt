@@ -76,6 +76,20 @@ shortcode_ui_register_for_shortcode( 'shortcode_name',
 );
 ```
 
+Outputting requires decoding, and since Shortcake uses url encoding, the attribute powered by the rich text editor needs to be urldecoded before rendering its contents, like in the following example using the `urldecode` [function](http://php.net/manual/ro/function.urldecode.php):
+
+```php
+function shortcode_name( $atts ) {
+	extract( shortcode_atts(
+		array(
+			'text_element' => '',
+		),
+		$atts
+	));
+	return '<div>' . urldecode( $text_element ) . '</div>';
+}
+```
+
 = This doesn't work although I added the class according to the instructions. Am I missing anything? =
 
 Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/wp-shortcode-ui-richtext/issues), please ensure you are running the latest Shortcake (Shortcode UI) version downloaded from their own [GitHub repository](https://github.com/wp-shortcake/shortcake).
