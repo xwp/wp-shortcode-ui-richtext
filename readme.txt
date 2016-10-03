@@ -105,7 +105,15 @@ Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/
 = 0.1 =
 Initial release.
 
+= 0.2 =
+Modified SummerNote default configuration to initialise a toolbar which is more Wordpress-friendly.
+Added more examples to the readme.
+Ads default rich text editing to the shortcode inner_content.
+
 == Upgrade Notice ==
 
 = 0.1 =
 Initial version. No need to upgrade.
+
+= 0.2 =
+Upgrade to receive the rich text editor on the shortcode inner_content area.
