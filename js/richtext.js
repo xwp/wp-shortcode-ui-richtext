@@ -2,7 +2,7 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext';
+	var richTextSelector = 'textarea.shortcake-richtext, textarea#inner_content';
 	var richText = {};
 
 	/**
