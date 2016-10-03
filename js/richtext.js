@@ -13,7 +13,18 @@ jQuery(function( $ ) {
 	*/
 	richText.load = function( selector ) {
 		if ( ( 'undefined' !== $.fn.summernote ) && ( $( selector ).length ) ) {
-			$( selector ).summernote();
+			$( selector ).summernote({
+				toolbar: [
+					[ 'style', ['style'] ],
+					[ 'para', [ 'ul', 'ol' ] ],
+					[ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear' ] ],
+					[ 'fontsize' , [ 'fontsize' ] ],
+					[ 'color', [ 'color' ] ],
+					[ 'table', [ 'table' ] ],
+					[ 'insert', [ 'link', 'picture', 'video' ] ],
+					[ 'view', [ 'codeview', 'help' ] ]
+				]
+			});
 			return true;
 		} else {
 			return false;
