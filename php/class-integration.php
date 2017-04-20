@@ -52,5 +52,8 @@ class Integration {
 
 		wp_register_style( 'scui_richtext-summernote-css', $this->plugin->dir_url . 'lib/summernote/css/summernote.min.css' );
 		wp_enqueue_style( 'scui_richtext-summernote-css' );
+
+		wp_register_style( 'scui-richtext-css', $this->plugin->dir_url . 'css/shortcode-ui-richtext.css' );
+		wp_enqueue_style( 'scui-richtext-css' );
 	}
 }

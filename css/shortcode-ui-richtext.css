@@ -1,0 +1,9 @@
+/* Make sure the link box appears */
+div.mce-inline-toolbar-grp.mce-arrow-up {
+    z-index: 999999 !important;
+}
+
+/* Add border to text area so it's not just floating around. */
+.shortcode-ui-field-textarea .mce-edit-area.mce-container {
+    border: 1px solid #eee !important;
+}
