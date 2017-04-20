@@ -15,8 +15,19 @@ jQuery(function( $ ) {
 		if ( ( 'undefined' !== tinyMCE ) && ( $( selector ).length ) ) {
 			$( selector ).each( function() {
 
-				// Bind tinyMCE to this field
-				tinyMCE.execCommand('mceAddEditor', false, $(this).attr('id') );
+				var textarea_id = $(this).attr('id');
+
+				if( null === tinyMCE.get( textarea_id ) ) {
+
+					// Add a slight delay to offset the loading of any elements on the page. Sometimes doesn't load correctly
+					setTimeout(function () {
+						// Bind tinyMCE to this field
+						tinyMCE.execCommand('mceAddEditor', false, textarea_id );
+						tinyMCE.execCommand('mceAddControl', false, textarea_id );
+					}, 200);
+
+				}
+
 			});
 
 			return true;
