@@ -4,6 +4,6 @@ div.mce-inline-toolbar-grp.mce-arrow-up {
 }
 
 /* Add border to text area so it's not just floating around. */
-.shortcode-ui-field-textarea .mce-edit-area.mce-container {
+.edit-shortcode-form-fields .mce-tinymce.mce-container {
     border: 1px solid #eee !important;
 }
