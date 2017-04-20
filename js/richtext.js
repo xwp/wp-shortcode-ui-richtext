@@ -2,29 +2,23 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext, textarea#inner_content';
+	var richTextSelector = 'textarea.shortcake-richtext';
 	var richText = {};
 
 	/**
-	 * Loads summernote rich text editor.
+	 * Loads tinyMCE rich text editor.
 	 *
 	 * @param {string} selector
 	 * @returns {boolean}
-	*/
+	 */
 	richText.load = function( selector ) {
-		if ( ( 'undefined' !== $.fn.summernote ) && ( $( selector ).length ) ) {
-			$( selector ).summernote({
-				toolbar: [
-					[ 'style', ['style'] ],
-					[ 'para', [ 'ul', 'ol' ] ],
-					[ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear' ] ],
-					[ 'fontsize' , [ 'fontsize' ] ],
-					[ 'color', [ 'color' ] ],
-					[ 'table', [ 'table' ] ],
-					[ 'insert', [ 'link', 'picture', 'video' ] ],
-					[ 'view', [ 'codeview', 'help' ] ]
-				]
+		if ( ( 'undefined' !== tinyMCE ) && ( $( selector ).length ) ) {
+			$( selector ).each( function() {
+
+				// Bind tinyMCE to this field
+				tinyMCE.execCommand('mceAddEditor', false, $(this).attr('id') );
 			});
+
 			return true;
 		} else {
 			return false;
@@ -32,20 +26,28 @@ jQuery(function( $ ) {
 	};
 
 	/**
-	 * Unloads summernote rich text editor.
+	 * Unloads tinyMCE rich text editor.
 	 *
 	 * @param {string} selector
 	 * @returns {boolean}
-	*/
+	 */
 	richText.unload = function( selector ) {
-		if ( ( 'undefined' !== $.fn.summernote ) && ( $( selector ).length ) ) {
+
+		if ( ( $( selector ).length ) ) {
 			$( selector ).each( function() {
-				/* TODO: Handle ", [, ] */
+				var textarea_id = $( this).attr('id');
+
 				$( this )
-					.text( $( this ).summernote( 'code' ) )
-					.trigger( 'input' )
-					.summernote( 'destroy' );
+					.text( tinyMCE.get( textarea_id ).getContent() )
+					.trigger( 'input' );
+
+				// Remove tinyMCE from the field
+				tinymce.execCommand( 'mceRemoveEditor', true, textarea_id );
 			});
+
+			// Switch the global active editor back to the WordPress editor
+			wpActiveEditor = 'content';
+
 			return true;
 		} else {
 			return false;
@@ -53,6 +55,17 @@ jQuery(function( $ ) {
 	};
 
 	wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
+
+		// Dynamically bind to newly inserted elements as the action is fired after the field has been added
+		$(document).bind('DOMNodeInserted', function(e) {
+			var element = e.target;
+
+			if( $( element ).hasClass( 'shortcode-ui-content-insert' ) ) {
+				richText.loaded = richText.load( $( element ).find( richTextSelector ) );
+			}
+
+		});
+
 		richText.loaded = richText.load( richTextSelector );
 	} );
 	wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
