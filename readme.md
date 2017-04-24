@@ -18,7 +18,7 @@ It uses [TinyMCE](https://www.tinymce.com).
 
 ## Installation ##
 
-You need the latest version of of [Shortcake (Shortcode UI)] installed and activated. 
+You need the latest version of of [Shortcake (Shortcode UI)] installed and activated.
 
 1. Upload the plugin files to the `/wp-content/plugins/shortcode-ui-richtext` directory.
 2. Activate the plugin through the 'Plugins' screen in WordPress
@@ -108,8 +108,8 @@ Modified SummerNote default configuration to initialise a toolbar which is more 
 Added more examples to the readme.
 Ads default rich text editing to the shortcode inner_content.
 
-### 0.3 ###
-Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience. 
+### 1.0 ###
+Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
 
 ## Upgrade Notice ##
 
@@ -119,5 +119,5 @@ Initial version. No need to upgrade.
 ### 0.2 ###
 Upgrade to receive the rich text editor on the shortcode inner_content area.
 
-### 0.3 ###
+### 1.0 ###
 Upgrade to use TinyMCE instead of SummerNote. The HTML code editing is not available anymore for rich text elements.
