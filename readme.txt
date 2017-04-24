@@ -11,20 +11,18 @@ Plugin for adding rich text editing capabilities to textareas in Shortcake.
 
 == Description ==
 
-This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://ro.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
+This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://en.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
 
-It uses the [Summernote](http://summernote.org/) Super Simple WYSIWYG Editor on Bootstrap library.
-
-Important: at the time of writing the Wordpress plugins directory version of Shortcake (Shortcode UI) has not been updated since November 2015. This functionality relies on [PR #628](https://github.com/wp-shortcake/shortcake/pull/628) which got merged into the master branch of the plug-in in August 2016.
+It uses [TinyMCE](https://www.tinymce.com).
 
 == Installation ==
 
-You need the latest code in master from the Github repository of [Shortcake (Shortcode UI)](https://github.com/wp-shortcake/shortcake) already installed and activated. As soon as the newer release of the plug-in comes out (v0.6.3), this will be able to be used with the Wordpress plugins directory version from that point forward.
+You need the latest version of of [Shortcake (Shortcode UI)] installed and activated.
 
 1. Upload the plugin files to the `/wp-content/plugins/shortcode-ui-richtext` directory.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Add the meta class option to the textarea input type of an existing shortcake register_for_shortcode call.
-4. Due to the possibility of the HTML content to contain special characters like [, ] and ", it is highly recommended to turn on the encode flag as well.
+4. Due to the possibility of the user entered content to contain special characters like [, ] and ", it is highly recommended to turn on the encode flag as well.
 ```php
 'encode' => true,
 'meta'  => array(
@@ -92,7 +90,7 @@ function shortcode_name( $atts ) {
 
 = This doesn't work although I added the class according to the instructions. Am I missing anything? =
 
-Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/wp-shortcode-ui-richtext/issues), please ensure you are running the latest Shortcake (Shortcode UI) version downloaded from their own [GitHub repository](https://github.com/wp-shortcake/shortcake).
+Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/wp-shortcode-ui-richtext/issues), please ensure the issue you are experiencing does not exist with using the latest Shortcake (Shortcode UI) version downloaded from their own [GitHub repository](https://github.com/wp-shortcake/shortcake).
 
 == Screenshots ==
 
@@ -110,6 +108,9 @@ Modified SummerNote default configuration to initialise a toolbar which is more 
 Added more examples to the readme.
 Ads default rich text editing to the shortcode inner_content.
 
+= 0.3 =
+Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
+
 == Upgrade Notice ==
 
 = 0.1 =
@@ -117,3 +118,6 @@ Initial version. No need to upgrade.
 
 = 0.2 =
 Upgrade to receive the rich text editor on the shortcode inner_content area.
+
+= 0.3 =
+Upgrade to use TinyMCE instead of SummerNote. The HTML code editing is not available anymore for rich text elements.
