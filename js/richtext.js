@@ -2,7 +2,7 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext,#inner_content';
+	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 	var richText = {};
 
 	/**
@@ -68,7 +68,7 @@ jQuery(function( $ ) {
 	wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
 
 		// Dynamically bind to newly inserted elements as the action is fired after the field has been added
-		$(document).bind('DOMNodeInserted', function(e) {
+		$(document).bind( 'DOMNodeInserted', function(e) {
 			var element = e.target;
 
 			if( $( element ).hasClass( 'shortcode-ui-content-insert' ) ) {
