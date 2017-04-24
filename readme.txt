@@ -96,8 +96,6 @@ Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/
 
 1. This screenshot shows a rich text enabled textarea in the Shortcake interface.
 
-2. Here the code view of the editor is visible.
-
 == Changelog ==
 
 = 0.1 =

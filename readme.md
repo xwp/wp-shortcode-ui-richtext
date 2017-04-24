@@ -98,10 +98,6 @@ Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/
 
 ![This screenshot shows a rich text enabled textarea in the Shortcake interface.](assets/screenshot-1.jpg)
 
-### Here the code view of the editor is visible.
-
-![Here the code view of the editor is visible.](assets/screenshot-2.jpg)
-
 ## Changelog ##
 
 ### 0.1 ###
