@@ -1,0 +1,10 @@
+/* Make sure any popup boxes appear */
+div.mce-inline-toolbar-grp.mce-arrow-up,
+div.mce-floatpanel[style]{
+    z-index: 200000!important;
+}
+
+/* Add border to text area so it's not just floating around. */
+.edit-shortcode-form-fields .mce-tinymce.mce-container {
+    border: 1px solid #eee;
+}
