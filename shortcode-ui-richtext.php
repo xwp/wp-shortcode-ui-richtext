@@ -3,7 +3,7 @@
  * Plugin Name: Shortcake (Shortcode UI) Richtext
  * Plugin URI: https://github.com/xwp/wp-shortcode-ui-richtext
  * Description: Adds richtext capabilities to Shortcake textareas with shortcake-richtext class.
- * Version: 0.1
+ * Version: 1.0
  * Author:  XWP
  * Author URI: https://xwp.co/
  * License: GPLv2+

@@ -1,9 +1,9 @@
 === Shortcake (Shortcode UI) Richtext ===
-Contributors: xwp, mihai2u
+Contributors: xwp, mihai2u, bengreeley
 Tags: shortcodes
-Requires at least: 4.3
-Tested up to: 4.6
-Stable tag: trunk
+Requires at least: 4.5
+Tested up to: 4.7.3
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,24 +98,21 @@ Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/
 
 == Changelog ==
 
-= 0.1 =
+= 0.1 (August 19, 2016) =
 Initial release.
 
-= 0.2 =
+= 0.2 (October 3, 2016) =
 Modified SummerNote default configuration to initialise a toolbar which is more Wordpress-friendly.
 Added more examples to the readme.
 Ads default rich text editing to the shortcode inner_content.
 
-= 1.0 =
+= 1.0 (April 25, 2017) =
 Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
 
 == Upgrade Notice ==
 
-= 0.1 =
-Initial version. No need to upgrade.
-
 = 0.2 =
-Upgrade to receive the rich text editor on the shortcode inner_content area.
+Added the rich text editor on the shortcode inner_content area.
 
 = 1.0 =
-Upgrade to use TinyMCE instead of SummerNote. The HTML code editing is not available anymore for rich text elements.
+Replaced SummerNote by TinyMCE editor. The HTML code editing is not available anymore for rich text elements.
