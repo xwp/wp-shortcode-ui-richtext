@@ -4,6 +4,25 @@ jQuery(function( $ ) {
 
 	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 	var richText = {};
+	var modalFrame;
+
+
+	$(document).on('click', '.insert-media-modal', function(event){
+
+		modalFrame= wp.media( {
+			multiple: false
+		} );
+
+		modalFrame.open();
+
+		modalFrame.on( 'select', function(event) {
+			// Get media attachment details from the frame state
+			var attachment = modalFrame.state().get('selection').first().toJSON();
+
+			// Send the attachment URL to our custom image input field.
+			tinymce.activeEditor.insertContent('<img src="'+attachment.url+'" alt="'+attachment.alt+'" />');
+		}.bind( this ) )
+	});
 
 	/**
 	 * Loads tinyMCE rich text editor.
@@ -16,11 +35,15 @@ jQuery(function( $ ) {
 			$( selector ).each( function() {
 
 				var textarea_id = $(this).attr('id');
+				var $this = $(this);
 
 				if( null === tinyMCE.get( textarea_id ) ) {
 
 					// Add a slight delay to offset the loading of any elements on the page. Sometimes doesn't load correctly
 					setTimeout(function () {
+						$this.before('' +
+							'<button type="button" class="button insert-media-modal" data-editor="content">' +
+							'Add Media</button>');
 						// Bind tinyMCE to this field
 						tinyMCE.execCommand('mceAddEditor', false, textarea_id );
 						tinyMCE.execCommand('mceAddControl', false, textarea_id );
