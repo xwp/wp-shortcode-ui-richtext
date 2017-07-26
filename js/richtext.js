@@ -7,21 +7,25 @@ jQuery(function( $ ) {
 	var modalFrame;
 
 
-	$(document).on('click', '.insert-media-modal', function(event){
+	$(document).on('click', '.shortcake-insert-media-modal', function(event){
 
-		modalFrame= wp.media( {
-			multiple: false
-		} );
+		if ( ! modalFrame ) {
+			modalFrame= wp.media( {
+				multiple: false
+			} );
+			modalFrame.on( 'select', function(event) {
+				// Get media attachment details from the frame state
+				var attachment = modalFrame.state().get('selection').first().toJSON();
+
+				// Send the attachment URL to our custom image input field.
+				tinymce
+					.get( $( this ).data( 'editor' ) )
+					.insertContent('<img src="'+attachment.url+'" alt="'+attachment.alt+'" />');
+			}.bind( this ) );
+		}
 
 		modalFrame.open();
 
-		modalFrame.on( 'select', function(event) {
-			// Get media attachment details from the frame state
-			var attachment = modalFrame.state().get('selection').first().toJSON();
-
-			// Send the attachment URL to our custom image input field.
-			tinymce.activeEditor.insertContent('<img src="'+attachment.url+'" alt="'+attachment.alt+'" />');
-		}.bind( this ) )
 	});
 
 	/**
@@ -41,8 +45,8 @@ jQuery(function( $ ) {
 
 					// Add a slight delay to offset the loading of any elements on the page. Sometimes doesn't load correctly
 					setTimeout(function () {
-						$this.before('' +
-							'<button type="button" class="button insert-media-modal" data-editor="content">' +
+						$this.before('<button type="button" ' +
+							'class="button shortcake-insert-media-modal" style="margin-bottom:10px;" data-editor="' + textarea_id + '">' +
 							'Add Media</button>');
 						// Bind tinyMCE to this field
 						tinyMCE.execCommand('mceAddEditor', false, textarea_id );
