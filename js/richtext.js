@@ -17,10 +17,16 @@ jQuery(function( $ ) {
 				// Get media attachment details from the frame state
 				var attachment = modalFrame.state().get('selection').first().toJSON();
 
-				// Send the attachment URL to our custom image input field.
+				var $img = $(
+					'<img>',
+					{
+						src: attachment.url,
+						alt: attachment.alt
+					}
+				);
 				tinymce
-					.get( $( this ).data( 'editor' ) )
-					.insertContent('<img src="'+attachment.url+'" alt="'+attachment.alt+'" />');
+					.get($( this ).data('editor' ))
+					.insertContent($img.prop('outerHTML'));
 			}.bind( this ) );
 		}
 
@@ -45,9 +51,16 @@ jQuery(function( $ ) {
 
 					// Add a slight delay to offset the loading of any elements on the page. Sometimes doesn't load correctly
 					setTimeout(function () {
-						$this.before('<button type="button" ' +
-							'class="button shortcake-insert-media-modal" style="margin-bottom:10px;" data-editor="' + textarea_id + '">' +
-							'Add Media</button>');
+						var $button = $(
+							'<button>',
+							{
+								type: 'button',
+								"class": 'button shortcake-insert-media-modal',
+								style: 'margin-bottom:10px;',
+								text: 'Add Media'
+							}
+						).data('editor', textarea_id);
+						$this.before($button);
 						// Bind tinyMCE to this field
 						tinyMCE.execCommand('mceAddEditor', false, textarea_id );
 						tinyMCE.execCommand('mceAddControl', false, textarea_id );
