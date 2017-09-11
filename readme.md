@@ -1,9 +1,9 @@
 # Shortcake (Shortcode UI) Richtext
 **Contributors:** xwp, mihai2u
 **Tags:** shortcodes
-**Requires at least:** 4.3
-**Tested up to:** 4.6
-**Stable tag:** trunk
+**Requires at least:** 4.5
+**Tested up to:** 4.8.1
+**Stable tag:** 1.1
 **License:** GPLv2 or later
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,17 +109,21 @@ Before submitting a report on the [GitHub Issue tracker](https://github.com/xwp/
 
 
 ### 0.1
-Initial release.
+August 19, 2016 - Initial release.
 
 
 ### 0.2
-Modified SummerNote default configuration to initialise a toolbar which is more Wordpress-friendly.
+October 3, 2016 - Modified SummerNote default configuration to initialise a toolbar which is more Wordpress-friendly.
 Added more examples to the readme.
 Ads default rich text editing to the shortcode inner_content.
 
 
 ### 1.0
-Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
+April 25, 2017 - Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
+
+
+### 1.1
+September 11, 2017 - "Add Media" button is now present next to the TinyMCE editor.
 
 
 ## Upgrade Notice
