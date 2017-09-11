@@ -2,8 +2,8 @@
 Contributors: xwp, mihai2u, bengreeley
 Tags: shortcodes
 Requires at least: 4.5
-Tested up to: 4.7.3
-Stable tag: 1.0
+Tested up to: 4.8.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,9 @@ Ads default rich text editing to the shortcode inner_content.
 
 = 1.0 (April 25, 2017) =
 Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experience.
+
+= 1.1 (September 11, 2017) =
+"Add Media" button is now present next to the TinyMCE editor.
 
 == Upgrade Notice ==
 
