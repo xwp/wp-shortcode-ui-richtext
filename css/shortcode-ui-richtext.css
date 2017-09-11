@@ -4,6 +4,11 @@ div.mce-floatpanel[style]{
     z-index: 200000!important;
 }
 
+/* Add space between the button and the rich text area */
+.edit-shortcode-form-fields .shortcake-insert-media-modal {
+    margin: 10px 0;
+}
+
 /* Add border to text area so it's not just floating around. */
 .edit-shortcode-form-fields .mce-tinymce.mce-container {
     border: 1px solid #eee;
