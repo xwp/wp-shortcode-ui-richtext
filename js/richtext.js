@@ -105,27 +105,29 @@ jQuery(function( $ ) {
 		}
 	};
 
-	wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
+	if ( 'undefined' !== typeof( wp.shortcake ) ) {
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
 
-		// Dynamically bind to newly inserted elements as the action is fired after the field has been added
-		$(document).bind( 'DOMNodeInserted', function(e) {
-			var element = e.target;
+			// Dynamically bind to newly inserted elements as the action is fired after the field has been added
+			$(document).bind( 'DOMNodeInserted', function(e) {
+				var element = e.target;
 
-			if( $( element ).hasClass( 'shortcode-ui-content-insert' ) ) {
-				richText.loaded = richText.load( $( element ).find( richTextSelector ) );
+				if( $( element ).hasClass( 'shortcode-ui-content-insert' ) ) {
+					richText.loaded = richText.load( $( element ).find( richTextSelector ) );
+				}
+
+			});
+
+			richText.loaded = richText.load( richTextSelector );
+		} );
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
+			richText.loaded = richText.load( richTextSelector );
+		} );
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_destroy', function() {
+			if ( richText.loaded ) {
+				richText.unload( richTextSelector );
 			}
-
-		});
-
-		richText.loaded = richText.load( richTextSelector );
-	} );
-	wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
-		richText.loaded = richText.load( richTextSelector );
-	} );
-	wp.shortcake.hooks.addAction( 'shortcode-ui.render_destroy', function() {
-		if ( richText.loaded ) {
-			richText.unload( richTextSelector );
-		}
-	} );
+		} );
+	}
 
 } );
