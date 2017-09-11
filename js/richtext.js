@@ -56,7 +56,6 @@ jQuery(function( $ ) {
 							{
 								type: 'button',
 								"class": 'button shortcake-insert-media-modal',
-								style: 'margin-bottom:10px;',
 								text: 'Add Media'
 							}
 						).data('editor', textarea_id);
