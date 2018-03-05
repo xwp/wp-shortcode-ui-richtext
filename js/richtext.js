@@ -5,6 +5,7 @@ jQuery(function( $ ) {
 	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 	var richText = {};
 	var modalFrame;
+	var activeEditor;
 
 
 	$(document).on('click', '.shortcake-insert-media-modal', function(event){
@@ -24,12 +25,16 @@ jQuery(function( $ ) {
 						alt: attachment.alt
 					}
 				);
-				tinymce
-					.get($( this ).data('editor' ))
-					.insertContent($img.prop('outerHTML'));
-			}.bind( this ) );
+				
+				if (activeEditor) {
+					tinymce
+						.get(activeEditor)
+						.insertContent($img.prop('outerHTML'));
+			        }
+			} );
 		}
 
+		activeEditor = $( this ).data( 'editor' );
 		modalFrame.open();
 
 	});
