@@ -100,8 +100,11 @@ jQuery(function( $ ) {
 	};
 
 	if ( 'undefined' !== typeof( wp.shortcake ) ) {
-		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function(shortcodeModel) {
 			richText.loaded = richText.load( richTextSelector );
+			$('.media-modal .media-modal-close').click(function() {
+                wp.shortcake.hooks.doAction( 'shortcode-ui.render_closed', shortcodeModel );
+			});
 		} );
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
 			richText.loaded = richText.load( richTextSelector );
@@ -109,6 +112,7 @@ jQuery(function( $ ) {
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_destroy', function() {
 			richText.unload( richTextSelector );
 		} );
+
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_closed', function() {
 			richText.unload( richTextSelector );
 		} );
