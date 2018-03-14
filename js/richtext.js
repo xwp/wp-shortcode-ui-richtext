@@ -103,7 +103,7 @@ jQuery(function( $ ) {
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function(shortcodeModel) {
 			richText.loaded = richText.load( richTextSelector );
 			$('.media-modal .media-modal-close').click(function() {
-                wp.shortcake.hooks.doAction( 'shortcode-ui.render_closed', shortcodeModel );
+				wp.shortcake.hooks.doAction( 'shortcode-ui.render_closed', shortcodeModel );
 			});
 		} );
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
