@@ -2,8 +2,8 @@
 **Contributors:** xwp, mihai2u
 **Tags:** shortcodes
 **Requires at least:** 4.5
-**Tested up to:** 4.8.1
-**Stable tag:** 1.1
+**Tested up to:** 4.9.4
+**Stable tag:** 1.2
 **License:** GPLv2 or later
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,10 @@ April 25, 2017 - Replaced SummerNote by highly requested TinyMCE for a familiar 
 
 ### 1.1
 September 11, 2017 - "Add Media" button is now present next to the TinyMCE editor.
+
+
+### 1.2
+March 15, 2018 - Fixes issues with multiple editors on page and timing issues with initialising and unloading TinyMCE.
 
 
 ## Upgrade Notice
