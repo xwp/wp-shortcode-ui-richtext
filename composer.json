@@ -1,0 +1,19 @@
+{
+  "name": "xwp/shortcode-ui-richtext",
+  "description": "Plugin for adding rich text editing capabilities to textareas in Shortcake.",
+  "type": "wordpress-plugin",
+  "homepage": "https://github.com/xwp/wp-shortcode-ui-richtext",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "xwp"
+    },
+    {
+      "name": "mihai2u"
+    },
+    {
+      "name": "cyruscollier"
+    }
+  ]
+}
+

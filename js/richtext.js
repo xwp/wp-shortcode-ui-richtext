@@ -4,7 +4,8 @@ jQuery(function( $ ) {
 
 	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 	var richText = {};
-	var modalFrame;
+	var modalFrame, currentEditor;
+	var loadedEditors = [];
 
 
 	$(document).on('click', '.shortcake-insert-media-modal', function(event){
@@ -41,6 +42,7 @@ jQuery(function( $ ) {
 	 * @returns {boolean}
 	 */
 	richText.load = function( selector ) {
+		currentEditor = wpActiveEditor;
 		if ( ( 'undefined' !== tinyMCE ) && ( $( selector ).length ) ) {
 			$( selector ).each( function() {
 
@@ -63,6 +65,7 @@ jQuery(function( $ ) {
 						// Bind tinyMCE to this field
 						tinyMCE.execCommand('mceAddEditor', false, textarea_id );
 						tinyMCE.execCommand('mceAddControl', false, textarea_id );
+						loadedEditors.push(tinyMCE.get(textarea_id));
 					}, 200);
 
 				}
@@ -82,50 +85,36 @@ jQuery(function( $ ) {
 	 * @returns {boolean}
 	 */
 	richText.unload = function( selector ) {
-
-		if ( ( $( selector ).length ) ) {
-			$( selector ).each( function() {
-				var textarea_id = $( this).attr('id');
-
-				$( this )
-					.text( tinyMCE.get( textarea_id ).getContent() )
-					.trigger( 'input' );
-
-				// Remove tinyMCE from the field
-				tinymce.execCommand( 'mceRemoveEditor', true, textarea_id );
-			});
-
-			// Switch the global active editor back to the WordPress editor
-			wpActiveEditor = 'content';
-
-			return true;
-		} else {
-			return false;
+		var editor;
+		while (editor = loadedEditors.pop()) {
+			var $textarea = $('#' + editor.id);
+			if ($textarea.length) {
+				$textarea.text(editor.getContent())
+					.trigger('input');
+			}
+			editor.remove();
 		}
+
+		// Switch the global active editor back to the WordPress editor
+		wpActiveEditor = currentEditor;
 	};
 
 	if ( 'undefined' !== typeof( wp.shortcake ) ) {
-		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function() {
-
-			// Dynamically bind to newly inserted elements as the action is fired after the field has been added
-			$(document).bind( 'DOMNodeInserted', function(e) {
-				var element = e.target;
-
-				if( $( element ).hasClass( 'shortcode-ui-content-insert' ) ) {
-					richText.loaded = richText.load( $( element ).find( richTextSelector ) );
-				}
-
-			});
-
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_edit', function(shortcodeModel) {
 			richText.loaded = richText.load( richTextSelector );
+			$('.media-modal .media-modal-close').click(function() {
+				wp.shortcake.hooks.doAction( 'shortcode-ui.render_closed', shortcodeModel );
+			});
 		} );
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_new', function() {
 			richText.loaded = richText.load( richTextSelector );
 		} );
 		wp.shortcake.hooks.addAction( 'shortcode-ui.render_destroy', function() {
-			if ( richText.loaded ) {
-				richText.unload( richTextSelector );
-			}
+			richText.unload( richTextSelector );
+		} );
+
+		wp.shortcake.hooks.addAction( 'shortcode-ui.render_closed', function() {
+			richText.unload( richTextSelector );
 		} );
 	}
 
