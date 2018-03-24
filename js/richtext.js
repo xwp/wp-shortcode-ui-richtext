@@ -4,7 +4,9 @@ jQuery(function( $ ) {
 
 	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 	var richText = {};
-	var modalFrame, currentEditor;
+  var modalFrame;
+	var activeEditor;
+	var currentEditor;
 	var loadedEditors = [];
 
 
@@ -25,12 +27,16 @@ jQuery(function( $ ) {
 						alt: attachment.alt
 					}
 				);
-				tinymce
-					.get($( this ).data('editor' ))
-					.insertContent($img.prop('outerHTML'));
-			}.bind( this ) );
+				
+				if (activeEditor) {
+					tinymce
+						.get(activeEditor)
+						.insertContent($img.prop('outerHTML'));
+        }
+			} );
 		}
 
+		activeEditor = $( this ).data( 'editor' );
 		modalFrame.open();
 
 	});
