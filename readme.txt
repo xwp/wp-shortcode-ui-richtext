@@ -115,6 +115,9 @@ Replaced SummerNote by highly requested TinyMCE for a familiar Wordpress experie
 = 1.2 (March 15, 2018) =
 Fixes issues with multiple editors on page and timing issues with initialising and unloading TinyMCE.
 
+= 1.3 (March 24, 2018) =
+Fix active editor modal bug occurring when multiple fields had editors.
+
 == Upgrade Notice ==
 
 = 0.2 =

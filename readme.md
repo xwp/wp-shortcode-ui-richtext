@@ -129,6 +129,9 @@ September 11, 2017 - "Add Media" button is now present next to the TinyMCE edito
 ### 1.2
 March 15, 2018 - Fixes issues with multiple editors on page and timing issues with initialising and unloading TinyMCE.
 
+### 1.3
+March 24, 2018 - Fix active editor modal bug occurring when multiple fields had editors.
+
 
 ## Upgrade Notice
 

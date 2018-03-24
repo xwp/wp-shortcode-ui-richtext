@@ -2,10 +2,12 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
+  var activeEditor;
+  var currentEditor;
+	var loadedEditors = []; 
+	var modalFrame;
 	var richText = {};
-	var modalFrame, currentEditor;
-	var loadedEditors = [];
+	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 
 
 	$(document).on('click', '.shortcake-insert-media-modal', function(event){
@@ -25,12 +27,16 @@ jQuery(function( $ ) {
 						alt: attachment.alt
 					}
 				);
-				tinymce
-					.get($( this ).data('editor' ))
-					.insertContent($img.prop('outerHTML'));
-			}.bind( this ) );
+				
+				if (activeEditor) {
+					tinymce
+						.get(activeEditor)
+						.insertContent($img.prop('outerHTML'));
+        }
+			} );
 		}
 
+		activeEditor = $( this ).data( 'editor' );
 		modalFrame.open();
 
 	});
