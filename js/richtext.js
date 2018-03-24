@@ -2,12 +2,12 @@
 jQuery(function( $ ) {
 	'use strict';
 
-	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
+  var activeEditor;
+  var currentEditor;
+	var loadedEditors = []; 
+	var modalFrame;
 	var richText = {};
-  var modalFrame;
-	var activeEditor;
-	var currentEditor;
-	var loadedEditors = [];
+	var richTextSelector = 'textarea.shortcake-richtext, #inner_content';
 
 
 	$(document).on('click', '.shortcake-insert-media-modal', function(event){
