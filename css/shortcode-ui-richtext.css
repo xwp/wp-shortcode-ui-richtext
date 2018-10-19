@@ -1,7 +1,7 @@
 /* Make sure any popup boxes appear */
 div.mce-inline-toolbar-grp.mce-arrow-up,
 div.mce-floatpanel[style]{
-    z-index: 200000!important;
+    z-index: 500100!important;
 }
 
 /* Add space between the button and the rich text area */
