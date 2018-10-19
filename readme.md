@@ -12,6 +12,8 @@ Plugin for adding rich text editing capabilities to textareas in Shortcake.
 
 ## Description
 
+Deprecation notice: with the Guttenberg coming into core in a short amount of time, there won't be a need for shortcode UI & it's richtext extension anymore. Everything transitions into blocks and that should be the way to develop moving forward.
+
 This plug-in extends on the capabilities of [Shortcake (Shortcode UI)](https://en.wordpress.org/plugins/shortcode-ui/) by adding rich text editing capabilities to textarea inputs in the Shortcake interface, when the specific textarea constructors contain the shortcake-richtext class name.
 
 It uses [TinyMCE](https://www.tinymce.com).
